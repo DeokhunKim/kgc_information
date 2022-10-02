@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="ability.css">
+    <title>Ability</title>
+</head>
+<body>
+
+<table border="1" class="mainTable">
+    <th colspan="3" style="width: 65%">
+      에반
+    </th>
+    <th style="width: 35%">
+        Controller
+    </th>
+    <tr>
+        <td>
+        <td rowspan="1">
+            <img src="../../static/img/charater_dot/evan.png" style="width: 150px">
+        </td>
+        <td>
+            <table border="2" class="statTable">
+                <tr>
+                    <td><img src="../../static/img/staticon/heart.png" style="width: 25px"></td>
+                    <td id="hp">1175</td>
+                    <td><img src="../../static/img/staticon/StatIcon_02.png" style="width: 25px"></td>
+                    <td id="spl">94</td>
+                </tr>
+                <tr>
+                    <td><img src="../../static/img/staticon/StatIcon_01.png" style="width: 25px"></td>
+                    <td id="atk">118</td>
+                    <td><img src="../../static/img/staticon/StatIcon_03.png" style="width: 25px"></td>
+                    <td id="agi">120%</td>
+                </tr>
+                <tr>
+                    <td><img src="../../static/img/staticon/range1.png" style="width: 25px"></td>
+                    <td>미구현</td>
+                    <td><img src="../../static/img/staticon/speed.png" style="width: 25px"></td>
+                    <td>150</td>
+                </tr>
+            </table>
+        </td>
+        </td>
+        <td rowspan="3">
+            <table class="controlTable">
+                <tr>
+                    <td>현재 레벨: <b style="color: dodgerblue" id="level">1</b></td>
+                </tr>
+                <tr>
+                    <td><span class="plusminus" id="levelMinus">-</span>
+                        &nbsp&nbsp&nbsp&nbsp
+                        레벨 변경
+                        &nbsp&nbsp&nbsp&nbsp
+                        <span class="plusminus" id="levelPlus">+</span> </td>
+                </tr>
+                <tr></tr><tr></tr>
+                <tr>
+                    <td>현재 성급: <b style="color: coral" id="star">★</b></td>
+                </tr>
+                <tr>
+                    <td><span class="plusminus" id="starMinus">-</span>
+                        &nbsp&nbsp&nbsp&nbsp
+                        성급 변경
+                        &nbsp&nbsp&nbsp&nbsp
+                        <span class="plusminus" id="starPlus">+</span> </td>
+                </tr>
+                <tr></tr><tr></tr>
+                <tr>
+                    <td id="relicTitle">유물 옵션(click)</td>
+                </tr>
+                <tr>
+                    <td id="relicResult"> </td>
+                </tr>
+                <tr></tr><tr></tr>
+                <tr>
+                    <td>아이템 착용(미구현)</td>
+                </tr>
+                <tr>
+                    <td>
+                    <table border="1" class="itemTable">
+                        <td height="50px" width="50px" id="item_1">Click</td>
+                        <td height="50px" width="50px" id="item_2">Click</td>
+                        <td height="50px" width="50px" id="item_3">Click</td>
+                    </table>
+                    </td>
+                </tr>
+            </table>
+        </td>
+
+    </tr>
+    <tr>
+        <td colspan="3">
+            <table border="2" class="statTable" >
+                <tr>
+                    <td rowspan="2" style="background-color: black;text-align:center">
+                        <img src="../../static/img/skill/Skill_10030.png">
+                    </td>
+                    <td style="width: 70%">
+                        반월참
+                    </td>
+                    <td style="width: 30%;color: dodgerblue">
+                        마나 0/60
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="white-space: normal" id="description">
+                        검기를 발사해 전방 가로 <span style="color: dodgerblue">1</span>칸의 일직선상에 있는 모든 적들에게
+                        <span style="color: orange">20</span><span style="color: dodgerblue">+94</span> 만큼의
+                        피해를 입힙니다. (미구현)
+                    </td>
+                </tr>
+            </table>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="3">
+            <table border="2" class="statTable">
+                <tr id="skill4" style="color: gray">
+                    <td>
+                        level 4
+                    </td>
+                    <td colspan="2">
+                        전투 시작시 마나 100% 충전
+                    </td>
+                </tr>
+                <tr  id="skill8" style="color: gray">
+                    <td>
+                        level 8
+                    </td>
+                    <td colspan="2">
+                        주문력 +40%
+                    </td>
+                </tr>
+            </table>
+        </td>
+
+    </tr>
+</table>
+
+
+<div class="modal" id="modal_relic">
+    <div class="modal_content"
+    title="클릭하면 창이 닫힙니다.">
+        <table id = "relicTable">
+            <tr>
+                <td><img src="../../static/img/staticon/StatIcon_01.png" style="width: 25px"></td>
+                <td><input class="relicValueInput" type="number" id="relicValueInput1">%</td>
+            </tr>
+            <tr>
+                <td><img src="../../static/img/staticon/StatIcon_04.png" style="width: 25px"></td>
+                <td><input class="relicValueInput" type="number" id="relicValueInput2">%</td>
+            </tr>
+            <tr>
+                <td><img src="../../static/img/staticon/StatIcon_03.png" style="width: 25px"></td>
+                <td><input class="relicValueInput" type="number" id="relicValueInput3">%</td>
+            </tr>
+            <tr>
+                <td><img src="../../static/img/staticon/StatIcon_02.png" style="width: 25px"></td>
+                <td><input class="relicValueInput" type="number" id="relicValueInput4">%</td>
+            </tr>
+        </table>
+
+
+        <button id="exitRelicModal">확인</button>
+
+    </div>
+</div>
+
+<script src='ability.js'></script>
+<br>
+<b>현재 까지 발견된 문제점과 ToDo</b><br>
+1. 성급에 따른 능력치 수치 오차 (최대 3~4 정도 발생할 수 있는듯?)<br>
+2. 에반 말고 영웅 추가<br>
+3. 아이템 장착 추가<br>
+4. 사거리 기능 추가<br>
+5. 스킬 능력이 실제 능력치에 적용(예를들면 에반 8스킬)<br>
+5-1. 그럼 각성도 넣어야 하네..? 씁...<br>
+
+
+
+</body>
+</html>
