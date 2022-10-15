@@ -48,7 +48,7 @@ function CalculateDisplayValue() {
     document.getElementById('hp').innerText = Math.round(base_hp * levelFactor[level] * starFactor[star] );
     document.getElementById('atk').innerText = Math.round(base_atk * levelFactor[level] * starFactor[star] + Number(relic_atk)) ;
     document.getElementById('spl').innerText = spell;
-    document.getElementById('agi').innerText = Math.round((base_agi + (base_agi * 0.1 * (star - 1)) + base_agi * Number(relic_agi) / 100)  )  + '%';
+    document.getElementById('agi').innerText = Math.round((base_agi + (base_agi * 0.1 * (star - 1)) + base_agi * Number(relic_agi) / 100)  ) / 100;
 
     document.getElementById('description').innerHTML = getDescription(hero, spell, star);
 
