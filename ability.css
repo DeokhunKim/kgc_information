@@ -13,7 +13,9 @@ body{
     border-collapse: collapse;
     border:1px solid gray;
     color: white;
-    width: 500px;
+    width: 100%;
+    max-width: 550px;
+    height: 100%;
 }
 .controlTable{
     border-collapse: separate;
@@ -35,6 +37,9 @@ body{
 .plusminus{
     font-weight: bold;
     font-size: large;
+    background-color: #00000000;
+    color: white;
+    border: 0px;
 }
 .modal{
     background: #00000099;
