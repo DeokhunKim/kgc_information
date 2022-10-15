@@ -14,7 +14,6 @@ body{
     border:1px solid gray;
     color: white;
     width: 100%;
-    max-width: 550px;
     height: 100%;
 }
 .controlTable{
@@ -27,6 +26,8 @@ body{
     text-align: center;
     border-spacing: 10px;
     display: flex;
+    align-content: center;
+    justify-content: center;
 }
 .itemTable{
     border-collapse: collapse;
@@ -37,9 +38,12 @@ body{
 .plusminus{
     font-weight: bold;
     font-size: large;
-    background-color: #00000000;
     color: white;
-    border: 0px;
+
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    cursor: pointer;
 }
 .modal{
     background: #00000099;
