@@ -6,7 +6,7 @@ let relic_def = 0;
 let relic_agi = 0;
 let relic_spl = 0;
 
-let hero = 'evan';
+let hero_name = '에반';
 let base_hp = 250;
 let base_atk = 25;
 let base_spl = 20;
@@ -16,6 +16,11 @@ let desc
 
 let levelFactor = [0, 1, 1.2, 1.4, 1.7, 2, 2.3, 2.6, 3, 3.4, 3.8, 4.2, 4.7, 5.2, 5.7];
 let starFactor = [0, 1, 1.6, 2.6, 3.6, 4.8, 6, 7];
+
+
+
+
+
 
 // click listener
 //document.getElementById('item_1')
@@ -42,6 +47,50 @@ document.getElementById('starMinus')
 document.getElementById('starPlus')
     .addEventListener("click", starPlus);
 
+document.getElementById('heroInput')
+    .addEventListener("change", getHeroInfo);
+
+
+
+function getHeroInfo() {
+    let innerText = document.getElementById('heroInput').value;
+    let heroByName = getHeroByName(innerText);
+    if (heroByName != null) {
+        hero_name = heroByName.name
+        base_hp = heroByName.hp
+        base_agi = heroByName.agi
+        base_atk = heroByName.atk
+        base_spl = heroByName.spl
+        base_moveSpeed = heroByName.spd
+        CalculateDisplayValue()
+        changeDisplayInfoByChangeHero()
+    }
+}
+
+function getHeroByName(name) {
+    for (let i = 0; i < heroData.length; i++) {
+        if (heroData[i].name == name) {
+            return heroData[i];
+        }
+    }
+}
+
+function changeDisplayInfoByChangeHero(){
+    let heroSrc = '<img src="src/main/resources/static/img/charater_dot/'
+            + hero_name
+            +'.png" style="width: 150px" >'
+    document.getElementById('heroImgSrc').innerHTML = heroSrc;
+
+    let skillSrc = '<img src="src/main/resources/static/img/skill/'
+        + hero_name
+        +'.png">'
+    document.getElementById('skillImgSrc').innerHTML = skillSrc;
+
+
+
+
+    //<img src="src/main/resources/static/img/skill/에반.png">
+}
 
 function CalculateDisplayValue() {
     let spell = Math.round(base_spl * levelFactor[level] * starFactor[star] * (100+Number(relic_spl))/100 );
@@ -50,7 +99,7 @@ function CalculateDisplayValue() {
     document.getElementById('spl').innerText = spell;
     document.getElementById('agi').innerText = Math.round((base_agi + (base_agi * 0.1 * (star - 1)) + base_agi * Number(relic_agi) / 100)  ) / 100;
 
-    document.getElementById('description').innerHTML = getDescription(hero, spell, star);
+    document.getElementById('description').innerHTML = getDescription(hero_name, spell, star);
 
 }
 
@@ -162,10 +211,10 @@ function enterRelic() {
 
     let resultHtml = '';
     if (val1 != '') {
-        resultHtml += '<img src="src/main/resources/static/img/staticon/StatIcon_01.png" style="width: 16px">' + val1 + '% ';
+        resultHtml += '<img src="src/main/resources/static/img/staticon/StatIcon_01.png" style="width: 16px">' + val1 ;
     }
     if (val2 != '') {
-        resultHtml += '<img src="src/main/resources/static/img/staticon/StatIcon_04.png" style="width: 16px">' + val2 + '% ';
+        resultHtml += '<img src="src/main/resources/static/img/staticon/StatIcon_04.png" style="width: 16px">' + val2 ;
     }
     if (val3 != '') {
         resultHtml += '<img src="src/main/resources/static/img/staticon/StatIcon_03.png" style="width: 16px">' + val3 + '% ';
@@ -178,30 +227,5 @@ function enterRelic() {
     CalculateDisplayValue();
 }
 
-function getDescription(hero, spell, star) {
-    let desc = '';
 
-    if (hero == 'evan') {
-        let f1 = 999;
-        let f2 = 999; //20 35
-        if (1 <= star && star <= 2) {
-            f1 = 1;
-        } else if (3 <= star && star <= 4) {
-            f1 = 3;
-        } else if (5 <= star && star <= 6) {
-            f1 = 5;
-        } else /* if(7 == star) */{
-            f1 = 7;
-        }
-
-        desc ='검기를 발사해 전방 가로 <span style="color: dodgerblue">' + f1 + '</span>칸의 일직선상에 있는 모든 적들에게 <span style="color: orange">20</span><span style="color: dodgerblue">+'
-        + spell + '</span> 만큼의 피해를 입힙니다.';
-    } else if (hero == 'who') {
-
-    } else {
-        desc = '해당 영웅의 설명은 미구현 상태 입니다.'
-    }
-
-    return desc;
-}
 CalculateDisplayValue();
